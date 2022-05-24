@@ -112,7 +112,58 @@ public class HomeTest {
         String softskillsExpected = "Soft skills";
         Assert.assertEquals(softskillsActual, softskillsExpected);
     }
+ @Test(testName = "IN-4")
+    public void testDoSection() {
+        driver.get("https://interview-prep-test.herokuapp.com/");
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("test@yahoo.com");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("test123");
+        driver.findElement(By.xpath("//button[text()='Login']")).click();
+        driver.findElement(By.xpath("//button[text()='Add do ']")).click();
 
+        String expectedStatement = "learn and practice coding 7 days a week";
+        driver.findElement(By.id("inputArea1")).sendKeys(expectedStatement);
+        driver.findElement(By.xpath("//button[text()='Enter']")).click();
+        Assert.assertEquals(driver.findElement(By.xpath("//div[text()='learn and practice coding 7 days a week']")).getText(), expectedStatement);
+    }
+    @Test(testName = "IN-4")
+    public void testDoSectionNegative() {
+        driver.get("https://interview-prep-test.herokuapp.com/");
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("test@yahoo.com");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("test123");
+        driver.findElement(By.xpath("//button[text()='Login']")).click();
+        driver.findElement(By.xpath("//button[text()='Add do ']")).click();
+
+        String expectedStatement = "100% coding";
+        driver.findElement(By.id("inputArea1")).sendKeys(expectedStatement);
+        driver.findElement(By.xpath("//button[text()='Enter']")).click();
+        Assert.assertEquals(driver.findElement(By.xpath("//div[text()='100% coding']")).getText(), expectedStatement);
+    }
+    @Test(testName = "IN-4")
+    public void testDoNotSection() {
+        driver.get("https://interview-prep-test.herokuapp.com/");
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("test@yahoo.com");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("test123");
+        driver.findElement(By.xpath("//button[text()='Login']")).click();
+        driver.findElement(By.xpath("//div[@class='col-md-3 dont']//button")).click();
+
+        String expectedStatement = "dont give up 4ever";
+        driver.findElement(By.id("inputArea2")).sendKeys(expectedStatement);
+        driver.findElement(By.xpath("//button[text()='Enter']")).click();
+        Assert.assertEquals(driver.findElement(By.xpath("//div[text()='dont give up 4ever']")).getText(), expectedStatement);
+    }
+    @Test(testName = "IN-4")
+    public void testDoNotSectionNegative() {
+        driver.get("https://interview-prep-test.herokuapp.com/");
+        driver.findElement(By.xpath("//input[@name='email']")).sendKeys("test@yahoo.com");
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("test123");
+        driver.findElement(By.xpath("//button[text()='Login']")).click();
+        driver.findElement(By.xpath("//div[@class='col-md-3 dont']//button")).click();
+
+        String expectedStatement = "0/anything";
+        driver.findElement(By.id("inputArea2")).sendKeys(expectedStatement);
+        driver.findElement(By.xpath("//button[text()='Enter']")).click();
+        Assert.assertEquals(driver.findElement(By.xpath("//div[text()='0/anything']")).getText(), expectedStatement);
+    }
     @Test(testName = "IN-5(1)")
     public void dashbordQuestion1() {
 

@@ -15,7 +15,7 @@ public class HomeTest {
 
     @BeforeMethod
     public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\jimmy\\Desktop\\Selenium\\libs\\chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
 
         driver = new ChromeDriver();
 
@@ -95,7 +95,7 @@ public class HomeTest {
         String codingExpected = "Coding";
         Assert.assertEquals(codingActual, codingExpected);
 
-        String softskillsActual = driver.findElement(By.xpath("//button[text() = 'Soft Skills']")).getText();
+        String softskillsActual = driver.findElement(By.xpath("//button[text() = 'Soft skills']")).getText();
         String softskillsExpected = "Soft skills";
         Assert.assertEquals(softskillsActual, softskillsExpected);
     }

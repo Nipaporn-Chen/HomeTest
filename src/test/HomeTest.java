@@ -61,6 +61,19 @@ public class HomeTest {
 
         driver.get("https://interview-prep-test.herokuapp.com/");
 
+        //Validate username and password field is editable
+        WebElement username = driver.findElement(By.xpath("//input[@name='email']"));
+        WebElement password = driver.findElement(By.xpath("//input[@name='password']"));
+        username.isEnabled();
+        password.isEnabled();
+
+        //Enter username and password
+        username.sendKeys("test@yahoo.com");
+        password.sendKeys("test123");
+
+        //Press login
+        driver.findElement(By.xpath("//button[text()='Login']")).click();
+
         WebElement signoutBtn = driver.findElement(By.xpath("//a[@href='/login']/u"));
 
         String expected = "Sign out";

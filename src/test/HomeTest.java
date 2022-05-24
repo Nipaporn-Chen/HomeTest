@@ -151,7 +151,7 @@ public class HomeTest {
         //Verify the display question is correct
         String expectedResult = "How do we debug 3 code at the same time?\n" +
                 "Selam@123";
-        String actualResult1 = driver.findElement(By.xpath("//div[@class='row question-section shadow-sm']")).getText();
+        String actualResult1 = driver.findElement(By.xpath("//div[@class='col-md-8']")).getText();
 
         Assert.assertEquals(actualResult1, expectedResult);
 
